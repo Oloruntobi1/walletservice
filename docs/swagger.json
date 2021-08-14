@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "termsOfService": "blgntobi@gmail.com",
+        "contact": {
+            "name": "Tobi Balogun",
+            "url": "blgntobi@gmail.com",
+            "email": "blgntobi@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "paths": {
+        "/payout": {
+            "post": {
+                "description": "handle payout with name request",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "payout"
+                ],
+                "summary": "handle payout",
+                "operationId": "payout-by-name",
+                "parameters": [
+                    {
+                        "description": "person name",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/server.CreateWalletRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payload.WalletPayoutResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "payload.WalletPayoutResponse": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "server.CreateWalletRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "tobi"
+                }
+            }
+        }
+    },
+    "x-extension-openapi": {
+        "example": "value on a json format"
+    }
+}

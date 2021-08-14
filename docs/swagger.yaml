@@ -1,0 +1,48 @@
+definitions:
+  payload.WalletPayoutResponse:
+    properties:
+      balance:
+        example: 1
+        type: integer
+    type: object
+  server.CreateWalletRequest:
+    properties:
+      name:
+        example: tobi
+        type: string
+    type: object
+info:
+  contact:
+    email: blgntobi@gmail.com
+    name: Tobi Balogun
+    url: blgntobi@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: blgntobi@gmail.com
+paths:
+  /payout:
+    post:
+      consumes:
+      - application/json
+      description: handle payout with name request
+      operationId: payout-by-name
+      parameters:
+      - description: person name
+        in: body
+        name: name
+        schema:
+          $ref: '#/definitions/server.CreateWalletRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payload.WalletPayoutResponse'
+      summary: handle payout
+      tags:
+      - payout
+swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format
